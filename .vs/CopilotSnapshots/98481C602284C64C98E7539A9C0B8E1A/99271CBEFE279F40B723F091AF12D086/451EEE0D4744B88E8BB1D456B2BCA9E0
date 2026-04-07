@@ -1,0 +1,86 @@
+﻿namespace TestProject1
+{
+    [TestClass]
+    public sealed class Test1
+    {
+        private ICalculator _calculator;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            _calculator = new Calculator();
+        }
+
+        [TestMethod]
+        public void Add_TwoPositiveNumbers_ReturnsCorrectSum()
+        {
+            // Arrange
+            int a = 5;
+            int b = 3;
+            int expected = 8;
+
+            // Act
+            int result = _calculator.Add(a, b);
+
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Subtract_TwoNumbers_ReturnsCorrectDifference()
+        {
+            // Arrange
+            int a = 10;
+            int b = 4;
+            int expected = 6;
+
+            // Act
+            int result = _calculator.Subtract(a, b);
+
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Multiply_TwoNumbers_ReturnsCorrectProduct()
+        {
+            // Arrange
+            int a = 6;
+            int b = 7;
+            int expected = 42;
+
+            // Act
+            int result = _calculator.Multiply(a, b);
+
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Divide_ValidDivisor_ReturnsCorrectQuotient()
+        {
+            // Arrange
+            int a = 20;
+            int b = 4;
+            double expected = 5.0;
+
+            // Act
+            double result = _calculator.Divide(a, b);
+
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void Divide_ZeroDivisor_ThrowsException()
+        {
+            // Arrange
+            int a = 10;
+            int b = 0;
+
+            // Act
+            _calculator.Divide(a, b);
+        }
+    }
+}
