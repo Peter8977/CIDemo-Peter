@@ -1,4 +1,4 @@
-```yaml
+
 name: Build and Test
 
 on:
@@ -27,4 +27,4 @@ jobs:
     
     - name: Test
       run: dotnet test --no-build --verbosity normal
-```
+
